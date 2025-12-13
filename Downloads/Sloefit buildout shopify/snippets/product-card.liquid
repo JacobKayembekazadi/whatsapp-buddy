@@ -1,0 +1,95 @@
+<div class="product-card">
+  <a href="{{ product.url }}" class="product-card__link">
+    {%- if product.featured_media -%}
+      <div class="product-card__media">
+        {{ product.featured_media | image_url: width: 600 | image_tag:
+          loading: 'lazy',
+          widths: '165, 360, 533, 720, 940, 1066',
+          alt: product.featured_media.alt | escape,
+          class: 'product-card__image'
+        }}
+      </div>
+    {%- else -%}
+      <div class="product-card__media">
+        {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder' }}
+      </div>
+    {%- endif -%}
+    <div class="product-card__content">
+      <h3 class="product-card__title">{{ product.title | escape }}</h3>
+      {%- if product.description != blank -%}
+        <p class="product-card__description">{{ product.description | strip_html | truncatewords: 15 }}</p>
+      {%- endif -%}
+      <div class="product-card__price">
+        {%- render 'price', product: product, use_variant: true, show_badges: true -%}
+      </div>
+      <span class="product-card__button">View Product</span>
+    </div>
+  </a>
+</div>
+
+{% style %}
+  .product-card {
+    background-color: var(--color-base-background-1);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+  }
+  .product-card__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .product-card__media {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+  .product-card__image,
+  .product-card__placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .product-card__content {
+    padding: 1.5rem;
+  }
+  .product-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-base-text);
+    margin: 0 0 0.5rem;
+  }
+  .product-card__description {
+    font-size: 0.875rem;
+    color: var(--color-base-text);
+    opacity: 0.88;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.5;
+  }
+  .product-card__price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-base-text);
+    margin-bottom: 1rem;
+  }
+  .product-card__button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-primary);
+    color: var(--color-base-solid-button-labels);
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: filter 0.2s;
+  }
+  .product-card:hover .product-card__button {
+    filter: brightness(1.1);
+  }
+{% endstyle %}
+

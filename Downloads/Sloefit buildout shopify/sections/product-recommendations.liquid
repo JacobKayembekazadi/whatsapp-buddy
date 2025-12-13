@@ -1,0 +1,143 @@
+{%- liquid
+  assign products_to_display = section.settings.products_to_show | default: 2
+  assign collection = collections[section.settings.collection] | default: product.collection
+-%}
+
+<div class="product-recommendations color-{{ section.settings.color_scheme }} gradient">
+  <div class="product-recommendations__inner page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="product-recommendations__title">
+        {{ section.settings.title | escape }}
+      </h2>
+    {%- endif -%}
+
+    {%- if collection != blank and collection.products_count > 0 -%}
+      <ul class="product-recommendations__grid grid grid--1-col grid--2-col-desktop" role="list">
+        {%- assign product_count = 0 -%}
+        {%- for product_item in collection.products -%}
+          {%- unless product_item.id == product.id -%}
+            {%- if product_count < products_to_display -%}
+              <li class="grid__item">
+                {% render 'product-card', product: product_item %}
+              </li>
+              {%- assign product_count = product_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <ul class="product-recommendations__grid grid grid--1-col grid--2-col-desktop" role="list">
+        {%- for i in (1..2) -%}
+          <li class="grid__item">
+            {% render 'product-card-placeholder' %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</div>
+
+{% style %}
+  .product-recommendations {
+    padding: 3rem 1rem;
+  }
+  @media screen and (min-width: 750px) {
+    .product-recommendations {
+      padding: 4rem 1rem;
+    }
+  }
+  .product-recommendations__inner {
+    max-width: 75rem;
+    margin: 0 auto;
+  }
+  .product-recommendations__title {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: var(--color-base-text);
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 3rem;
+  }
+  @media screen and (min-width: 750px) {
+    .product-recommendations__title {
+      font-size: 3rem;
+    }
+  }
+  .product-recommendations__grid {
+    gap: 1.5rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 750px) {
+    .product-recommendations__grid {
+      gap: 2rem;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "COMPLETE THE STARTER STACK",
+      "label": "Heading",
+      "info": "Title for the recommendations section"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Select a collection to show related products from. If not selected, uses the current product's collection."
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 2,
+      "label": "Products to Show",
+      "info": "Number of products to display (excluding current product)"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "Accent 1"
+        },
+        {
+          "value": "accent-2",
+          "label": "Accent 2"
+        },
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Recommendations"
+    }
+  ]
+}
+{% endschema %}
+

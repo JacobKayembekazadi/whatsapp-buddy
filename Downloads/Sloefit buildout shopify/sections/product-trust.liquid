@@ -1,0 +1,228 @@
+<div class="product-trust color-{{ section.settings.color_scheme }} gradient">
+  <div class="product-trust__inner page-width">
+    <div class="product-trust__container">
+      {%- if section.settings.title != blank -%}
+        <h2 class="product-trust__title">
+          {{ section.settings.title | escape }}
+        </h2>
+      {%- endif -%}
+      
+      <div class="product-trust__grid grid grid--1-col grid--3-col-desktop">
+        {%- for block in section.blocks -%}
+          <div class="product-trust__item" {{ block.shopify_attributes }}>
+            <div class="product-trust__icon-wrapper">
+              {%- case block.settings.icon -%}
+                {%- when 'check' -%}
+                  {% render 'icon-check-circle' %}
+                {%- when 'flask' -%}
+                  {% render 'icon-flask' %}
+                {%- when 'award' -%}
+                  {% render 'icon-award' %}
+                {%- else -%}
+                  {% render 'icon-check-circle' %}
+              {%- endcase -%}
+            </div>
+            {%- if block.settings.heading != blank -%}
+              <h3 class="product-trust__heading">{{ block.settings.heading | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="product-trust__text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .product-trust {
+    padding: 3rem 1rem;
+  }
+  @media screen and (min-width: 750px) {
+    .product-trust {
+      padding: 4rem 1rem;
+    }
+  }
+  .product-trust__inner {
+    max-width: 75rem;
+    margin: 0 auto;
+  }
+  .product-trust__container {
+    background-color: var(--color-base-background-2);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+  @media screen and (min-width: 750px) {
+    .product-trust__container {
+      padding: 3rem;
+    }
+  }
+  .product-trust__title {
+    font-size: 1.875rem;
+    font-weight: 900;
+    color: var(--color-base-text);
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 2.5rem;
+  }
+  @media screen and (min-width: 750px) {
+    .product-trust__title {
+      font-size: 2.25rem;
+    }
+  }
+  .product-trust__grid {
+    gap: 2rem;
+  }
+  .product-trust__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .product-trust__icon-wrapper {
+    background-color: var(--color-base-background-1);
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-trust__icon-wrapper svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-primary);
+  }
+  .product-trust__heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-base-text);
+    margin: 1rem 0 0.25rem;
+  }
+  .product-trust__text {
+    font-size: 0.875rem;
+    color: var(--color-base-text);
+    opacity: 0.88;
+    margin: 0;
+    line-height: 1.5;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product Trust",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Transparently Sourced, No Guesswork.",
+      "label": "Heading",
+      "info": "Main title for the trust section"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "Accent 1"
+        },
+        {
+          "value": "accent-2",
+          "label": "Accent 2"
+        },
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "check",
+              "label": "Check Circle"
+            },
+            {
+              "value": "flask",
+              "label": "Flask"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            }
+          ],
+          "default": "check",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Zero Added Sugar",
+          "label": "Heading",
+          "info": "Title for this trust point"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Only clean, effective ingredients.",
+          "label": "Text",
+          "info": "Description text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Trust",
+      "blocks": [
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "check",
+            "heading": "Zero Added Sugar",
+            "text": "Only clean, effective ingredients."
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "flask",
+            "heading": "Lab Tested",
+            "text": "Third-party tested for purity and potency."
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "icon": "award",
+            "heading": "Manufactured in USA",
+            "text": "Made in a cGMP certified facility."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

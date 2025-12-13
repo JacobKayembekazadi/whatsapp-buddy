@@ -1,0 +1,86 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "search": {
+      "search": "Search",
+      "no_results": "No results found"
+    },
+    "share": {
+      "share": "Share",
+      "success_message": "Link copied to clipboard"
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    }
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "announcement-bar": {
+      "announcement": "Announcement"
+    },
+    "cart": {
+      "cart_error": "There was an error while updating your cart. Please try again.",
+      "cart_quantity_error_html": "You can only add [quantity] of this item to your cart."
+    },
+    "footer": {
+      "copyright": "All rights reserved."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "on_sale": "On Sale",
+      "value_unavailable": "{{ value }} is unavailable",
+      "price": {
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "from_price_html": "From {{ price }}",
+        "unit_price": "Unit price"
+      },
+      "media": {
+        "image_available": "Image {{ index }}",
+        "load_image": "Load image {{ index }}"
+      },
+      "quantity": {
+        "label": "Quantity",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}"
+      }
+    }
+  },
+  "newsletter": {
+    "label": "Email address",
+    "button_label": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "refresh_page": "Choosing a selection results in a full page refresh.",
+    "link_messages": {
+      "new_window": "Opens in a new window."
+    },
+    "loading": "Loading...",
+    "unit_price_separator": "per"
+  },
+  "customer": {
+    "account_fallback": "Account",
+    "log_in": "Log in"
+  },
+  "templates": {
+    "cart": {
+      "cart": "Cart"
+    }
+  }
+}
+

@@ -1,0 +1,175 @@
+/* Base CSS for Sloe Fit Theme */
+
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--color-base-text);
+  background-color: var(--color-base-background-1);
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.2;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: var(--buttons-radius);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+/* Layout Utilities */
+.page-width {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width {
+    padding: 0 5rem;
+  }
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid--1-col {
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 750px) {
+  .grid--2-col-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid--3-col-desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid--4-col-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Color Schemes */
+.color-accent-1 {
+  --color-base-text: var(--color-base-accent-1);
+  --color-base-background-1: var(--color-base-accent-1);
+}
+
+.color-accent-2 {
+  --color-base-text: var(--color-base-accent-2);
+  --color-base-background-1: var(--color-base-accent-2);
+}
+
+.color-background-1 {
+  --color-base-text: var(--color-base-text);
+  --color-base-background-1: var(--color-base-background-1);
+}
+
+.color-background-2 {
+  --color-base-text: var(--color-base-text);
+  --color-base-background-1: var(--color-base-background-2);
+}
+
+.color-inverse {
+  --color-base-text: var(--color-base-background-1);
+  --color-base-background-1: var(--color-base-text);
+}
+
+/* Gradient */
+.gradient {
+  background: var(--gradient-base-background-1);
+}
+
+/* Utility Classes */
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal !important;
+}
+
+.visually-hidden--inline {
+  margin: 0;
+  height: 1em;
+}
+
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Focus Styles */
+.focus-inset:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.focus-none:focus {
+  outline: none;
+}
+
+/* Motion Reduce */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive Typography */
+@media screen and (min-width: 750px) {
+  body {
+    font-size: 1.6rem;
+  }
+}
+

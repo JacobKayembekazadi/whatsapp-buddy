@@ -1,0 +1,200 @@
+<div class="brand-story color-{{ section.settings.color_scheme }} gradient">
+  <div class="brand-story__inner page-width">
+    <div class="brand-story__content">
+      {%- if section.settings.image != blank -%}
+        <div class="brand-story__image-wrapper">
+          {{ section.settings.image | image_url: width: 800 | image_tag:
+            loading: 'lazy',
+            widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+            alt: section.settings.image.alt | escape,
+            class: 'brand-story__image'
+          }}
+        </div>
+      {%- endif -%}
+      <div class="brand-story__text">
+        {%- if section.settings.title != blank -%}
+          <h2 class="brand-story__title">
+            {{ section.settings.title | escape }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="brand-story__description">
+            {{ section.settings.text }}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="button button--secondary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .brand-story {
+    padding: 5rem 1rem;
+  }
+  @media screen and (min-width: 750px) {
+    .brand-story {
+      padding: 6rem 1rem;
+    }
+  }
+  .brand-story__inner {
+    max-width: 75rem;
+    margin: 0 auto;
+  }
+  .brand-story__content {
+    background-color: var(--color-base-background-2);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (min-width: 750px) {
+    .brand-story__content {
+      flex-direction: row;
+    }
+  }
+  .brand-story__image-wrapper {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  @media screen and (min-width: 750px) {
+    .brand-story__image-wrapper {
+      width: 50%;
+    }
+  }
+  .brand-story__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .brand-story__text {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media screen and (min-width: 750px) {
+    .brand-story__text {
+      width: 50%;
+      padding: 4rem;
+    }
+  }
+  .brand-story__title {
+    font-size: 1.875rem;
+    font-weight: 900;
+    color: var(--color-base-text);
+    text-transform: uppercase;
+    margin: 0 0 1.25rem;
+  }
+  @media screen and (min-width: 750px) {
+    .brand-story__title {
+      font-size: 2.25rem;
+    }
+  }
+  .brand-story__description {
+    font-size: 1.125rem;
+    color: var(--color-base-text);
+    opacity: 0.88;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .button--secondary {
+    background-color: transparent;
+    border: 1px solid var(--color-base-text);
+    color: var(--color-base-text);
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+  .button--secondary:hover {
+    background-color: var(--color-base-text);
+    color: var(--color-base-background-1);
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Brand Story",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Upload an image for the brand story section (recommended: 800x600px)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "FITNESS YOU CAN TRUST.",
+      "label": "Heading",
+      "info": "Main title for the brand story"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>We were tired of confusing labels and mystery ingredients. Sloe Fit was founded on transparency. We provide only the highest-quality, effective supplements, so you know exactly what you're putting in your body.</p>",
+      "label": "Text",
+      "info": "The story text (supports basic HTML formatting)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Our Story",
+      "label": "Button Label",
+      "info": "Text for the call-to-action button"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "info": "Link to the full story page (e.g., /pages/our-story)"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "Accent 1"
+        },
+        {
+          "value": "accent-2",
+          "label": "Accent 2"
+        },
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story"
+    }
+  ]
+}
+{% endschema %}
+

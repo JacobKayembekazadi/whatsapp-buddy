@@ -1,0 +1,218 @@
+<div class="how-it-works color-{{ section.settings.color_scheme }} gradient">
+  <div class="how-it-works__inner page-width">
+    <div class="how-it-works__header">
+      {%- if section.settings.title != blank -%}
+        <h2 class="how-it-works__title">
+          {{ section.settings.title | escape }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="how-it-works__description">
+          {{ section.settings.description | escape }}
+        </p>
+      {%- endif -%}
+    </div>
+
+    <div class="how-it-works__grid grid grid--1-col grid--3-col-desktop">
+      {%- for block in section.blocks -%}
+        <div class="how-it-works__item" {{ block.shopify_attributes }}>
+          <div class="how-it-works__card">
+            {%- if block.settings.number != blank -%}
+              <span class="how-it-works__number">{{ block.settings.number | escape }}</span>
+            {%- endif -%}
+            {%- if block.settings.heading != blank -%}
+              <h3 class="how-it-works__heading">{{ block.settings.heading | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="how-it-works__text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .how-it-works {
+    padding: 5rem 1rem;
+  }
+  @media screen and (min-width: 750px) {
+    .how-it-works {
+      padding: 6rem 1rem;
+    }
+  }
+  .how-it-works__inner {
+    max-width: 75rem;
+    margin: 0 auto;
+  }
+  .how-it-works__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .how-it-works__title {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: var(--color-base-text);
+    text-transform: uppercase;
+    margin: 0;
+  }
+  @media screen and (min-width: 750px) {
+    .how-it-works__title {
+      font-size: 3rem;
+    }
+  }
+  .how-it-works__description {
+    max-width: 32rem;
+    margin: 1rem auto 0;
+    font-size: 1.125rem;
+    color: var(--color-base-text);
+    opacity: 0.88;
+  }
+  .how-it-works__grid {
+    gap: 1.5rem;
+  }
+  @media screen and (min-width: 750px) {
+    .how-it-works__grid {
+      gap: 2rem;
+    }
+  }
+  .how-it-works__card {
+    background-color: var(--color-base-background-2);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+  .how-it-works__number {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  .how-it-works__heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-base-text);
+    margin: 0 0 0.75rem;
+  }
+  .how-it-works__text {
+    font-size: 1rem;
+    color: var(--color-base-text);
+    opacity: 0.88;
+    margin: 0;
+    line-height: 1.6;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "A COACH IN YOUR POCKET.",
+      "label": "Heading",
+      "info": "Main title for the section"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "default": "Sloe Fit is more than supplements. It's a complete system designed to guide you.",
+      "label": "Description",
+      "info": "Subtitle or description text"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "Accent 1"
+        },
+        {
+          "value": "accent-2",
+          "label": "Accent 2"
+        },
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "default": "01.",
+          "label": "Step Number",
+          "info": "The number or label for this step (e.g., '01.', '02.', '03.')"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "FUEL YOUR BODY.",
+          "label": "Heading",
+          "info": "Title for this step"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "default": "Start with premium, transparently sourced supplements. No mystery ingredients, just clean fuel for your goals.",
+          "label": "Text",
+          "info": "Description text for this step"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "01.",
+            "heading": "FUEL YOUR BODY.",
+            "text": "Start with premium, transparently sourced supplements. No mystery ingredients, just clean fuel for your goals."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "02.",
+            "heading": "TRAIN SMARTER.",
+            "text": "Our forthcoming AI coach will personalize workouts, nutrition, and track your progress in one simple app."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "03.",
+            "heading": "SEE RESULTS.",
+            "text": "The combined ecosystem ensures you stay on track, breaking through plateaus and achieving sustainable fitness."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

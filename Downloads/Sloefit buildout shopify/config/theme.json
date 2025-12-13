@@ -1,0 +1,188 @@
+{
+  "name": "Sloe Fit",
+  "version": "1.0.0",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "colors_accent_1",
+      "default": "#C8FF00",
+      "label": "Primary Accent (Electric Lime)",
+      "info": "Used for buttons, CTAs, and highlights"
+    },
+    {
+      "type": "color",
+      "id": "colors_text",
+      "default": "#FFFFFF",
+      "label": "Text Color"
+    },
+    {
+      "type": "color",
+      "id": "colors_background_1",
+      "default": "#121212",
+      "label": "Background Color (Dark)"
+    },
+    {
+      "type": "color",
+      "id": "colors_background_2",
+      "default": "#1E1E1E",
+      "label": "Background Alt (Dark Alt)"
+    },
+    {
+      "type": "color",
+      "id": "colors_solid_button_labels",
+      "default": "#121212",
+      "label": "Button Text (on Primary Background)"
+    },
+    {
+      "type": "color",
+      "id": "colors_outline_button_labels",
+      "default": "#FFFFFF",
+      "label": "Outline Button Text"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "type_header_font",
+      "default": "inter_n7",
+      "label": "Heading Font",
+      "info": "Used for all headings. Inter Black recommended."
+    },
+    {
+      "type": "font_picker",
+      "id": "type_body_font",
+      "default": "inter_n4",
+      "label": "Body Font",
+      "info": "Used for body text. Inter Regular recommended."
+    },
+    {
+      "type": "range",
+      "id": "heading_scale",
+      "min": 100,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "Heading Scale",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "body_scale",
+      "min": 100,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "Body Scale",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "page_width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "default": 1200,
+      "unit": "px",
+      "label": "Page Width"
+    },
+    {
+      "type": "range",
+      "id": "spacing_sections",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Section Spacing",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "range",
+      "id": "buttons_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Product Cards"
+    },
+    {
+      "type": "range",
+      "id": "card_corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Corner Radius",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "card_text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Card Text Alignment"
+    }
+  ],
+  "sections": {
+    "header-group": {
+      "type": "header-group",
+      "blocks": {
+        "announcement-bar": {
+          "type": "announcement-bar"
+        },
+        "header": {
+          "type": "header"
+        }
+      },
+      "max_blocks": 2
+    },
+    "footer-group": {
+      "type": "footer-group",
+      "blocks": {
+        "footer": {
+          "type": "footer"
+        }
+      },
+      "max_blocks": 1
+    }
+  },
+  "content_for_index": [
+    "hero",
+    "featured-collection",
+    "how-it-works",
+    "brand-story",
+    "newsletter"
+  ]
+}
+
